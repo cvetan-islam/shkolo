@@ -31,7 +31,7 @@ class DashboardController extends Controller {
       return back()->with('error', $errors);
     } else {
       $config->title = $request->title;
-      $config->link = $request->link;
+      $config->link = $request->link ?? '';
       $config->color = $request->color;
       if($config->save()){
         return redirect()->route('dashboard')->with('success', 'Configuration edited successfully!');

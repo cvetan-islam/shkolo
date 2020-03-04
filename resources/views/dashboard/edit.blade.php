@@ -16,15 +16,23 @@
     <label for="title">Title: </label><input type="text" name="title" value="<?php echo $config->title?>"> <br />
     <label for="link">Link: </label><input type="text" name="link" value="<?php echo $config->link?>" placeholder="http://google.com"> <br />
     <label for="color">Color: </label>
-    <select name="color">
+    <select id="colorSelect" name="color" style="color:<?php echo $colors[$config->color]?>">
     <?php foreach ($colors as $id => $color) { ?>
-      <option value="<?php echo $id ?>" <?php echo ($id == $config->color) ? 'selected="selected"' : ''?>> <?php echo $color?></option>
+      <option value="<?php echo $id ?>" <?php echo ($id == $config->color) ? 'selected="selected"' : ''?> style="color:<?php echo $color?>"> <?php echo $color?></option>
     <?php } ?>
     </select> <br />
     <input type="submit" value="Save" />
 
   </form>
 </div>
-
+<script>
+$(document).ready(function() {
+  $('#colorSelect').on('change', function (e) {
+    console.log($('#colorSelect option:selected').css('color'));
+    var css = $('#colorSelect option:selected').text();
+    $('#colorSelect').css('color', css);
+  });
+});
+</script>
 </body>
 </html>

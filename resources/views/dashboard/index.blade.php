@@ -31,10 +31,10 @@
 </div>
 <script>
 $(document).ready(function() {
+
   $(".cell").click(function() {
     window.location.href=$(this).data('href');
   });
-
 
     $.contextMenu({
       selector: '.cell',

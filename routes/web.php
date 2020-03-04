@@ -15,7 +15,10 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'DashboardController@index')->name('dashboard');
+Route::get('/', function () {
+  return view('welcome');
+});
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/edit/{id}', 'DashboardController@edit');
 Route::post('/dashboard/edit/{id}', 'DashboardController@update');
 Route::post('/dashboard/delete/{id}', 'DashboardController@delete');

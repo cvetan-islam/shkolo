@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 class Dashboard extends Model {
   const COLOR_NONE = 0;
   const COLOR_RED = 1;
-  const COLOR_YELLOW = 2;
+  const COLOR_PURPLE = 2;
   const COLOR_BLUE = 3;
   const COLOR_GREEN = 4;
   const COLOR_ORANGE = 5;
@@ -16,9 +16,9 @@ class Dashboard extends Model {
   protected $table = 'dashboard';
 
   private $rules = [
-    'title' => 'required|max:255',
+    'title' => 'required|unique:dashboard|max:255',
     'link' => 'max:255',
-    'color' => 'required|in:'.self::COLOR_NONE.','.self::COLOR_RED.','.self::COLOR_YELLOW.','.self::COLOR_BLUE.','.self::COLOR_GREEN.','.self::COLOR_ORANGE,
+    'color' => 'required|in:'.self::COLOR_NONE.','.self::COLOR_RED.','.self::COLOR_PURPLE.','.self::COLOR_BLUE.','.self::COLOR_GREEN.','.self::COLOR_ORANGE,
   ];
 
   public $errors = [];
@@ -30,7 +30,7 @@ class Dashboard extends Model {
     return [
       self::COLOR_NONE => 'none',
       self::COLOR_RED => 'red',
-      self::COLOR_YELLOW => 'yellow',
+      self::COLOR_PURPLE => 'purple',
       self::COLOR_BLUE => 'blue',
       self::COLOR_GREEN => 'green',
       self::COLOR_ORANGE => 'orange'

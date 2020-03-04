@@ -81,18 +81,20 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    SHKOLO
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://docs.google.com/document/d/1iHL4zVDZgp-iVwldMwsqk7ru1O_Lm1t5nWiLAxVfFUw">Go To - Task Description</a> <br/><br/>
+                    SOME NOTES:
+                    <ul>
+                        <li>In real task I would ask some question and make some porposals:</li>
+                        <li>Nothing is said about deleting/adding a button (so I guess there will always be 9 buttons on grid)</li>
+                        <li>Nothing is said if the hyperlink exist - how you go on edit/delete configuration (I suggest right mouse button - but it won't work on tablets or phones)</li>
+                        <li>Nothing is said if the title should be unique (I will make it unique)</li>
+                    </ul>
+                    <a href="{{url('dashboard')}}">Go To Implementation</a>
+
                 </div>
             </div>
         </div>
