@@ -1,0 +1,107 @@
+.container {
+    margin: auto;
+    width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.cell {
+    margin: 2px;
+    flex-grow: 0.25;
+    border: 1px solid;
+    width: 150px;
+    height:30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 240px
+    }
+    .cell {
+        width: 114px;
+    }
+}
+
+@media (max-width: 240px) {
+    .container {
+        width: 150px;
+    }
+    .cell {
+        width: 146px;
+    }
+}
+
+.alert.alert-danger{
+    padding: 10px;
+    float: right;
+    width: 456px;
+    min-height: 50px;
+    border: 1px solid #D33C44;
+    background: #ff6666;
+    color:#7a252a;
+    font-weight: bold;
+    text-align: left;
+    box-shadow: 1px 1px 4px 0 #8a8a8a;
+    position: relative;
+    border-radius: 5px;
+}
+
+.alert.alert-success{
+    padding: 10px;
+    float: right;
+    width: 456px;
+    min-height: 50px;
+    background: #BCF5BC;
+    border: 1px solid #7CDD77;
+    color: #006400;
+    font-weight: bold;
+    text-align: left;
+    box-shadow: 1px 1px 4px 0 #8a8a8a;
+    position: relative;
+    border-radius: 5px;
+}
+
+.alert button{
+    float: right;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 2px 15px 2px 2px;
+    width: 250px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #636b6f;
+    color: #ffffff;
+}
+
+select {
+    margin: 5px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 2px 15px 2px 2px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    /*height: 34px;*/
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+    min-width: 60px;
+}
