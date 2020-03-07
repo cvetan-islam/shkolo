@@ -16,7 +16,7 @@ class Dashboard extends Model {
   protected $table = 'dashboard';
 
   private $rules = [
-    'title' => 'required|unique:dashboard|max:255',
+    'title' => 'required|max:255|unique:dashboard',
     'link' => 'max:255',
     'color' => 'required|in:'.self::COLOR_NONE.','.self::COLOR_RED.','.self::COLOR_PURPLE.','.self::COLOR_BLUE.','.self::COLOR_GREEN.','.self::COLOR_ORANGE,
   ];
@@ -42,7 +42,9 @@ class Dashboard extends Model {
    * @return bool
    */
   public function validate($data) {
-    $v = Validator::make($data, $this->rules);
+    $rules = $this->rules;
+    $rules['title'] = $rules['title']. ',id,' . $this->id;
+    $v = Validator::make($data, $rules);
     if ($v->fails()) {
       $this->errors = $v->errors();
       return false;
