@@ -26,7 +26,7 @@ class Dashboard extends Model {
   /**
    * @return array
    */
-  public static function getAllColors() {
+  public static function getAllColors() : array {
     return [
       self::COLOR_NONE => 'none',
       self::COLOR_RED => 'red',
@@ -41,7 +41,7 @@ class Dashboard extends Model {
    * @param $data
    * @return bool
    */
-  public function validate($data) {
+  public function validate($data) : bool {
     $rules = $this->rules;
     $rules['title'] = $rules['title']. ',id,' . $this->id;
     $v = Validator::make($data, $rules);
@@ -53,7 +53,11 @@ class Dashboard extends Model {
   }
 
 
-  public function reset() {
+  /**
+   * Resets button configuration
+   * @return bool
+   */
+  public function reset() : bool {
     $this->title = $this->id;
     $this->link = '';
     $this->color = self::COLOR_NONE;
