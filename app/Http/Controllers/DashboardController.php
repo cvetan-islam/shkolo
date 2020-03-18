@@ -11,48 +11,45 @@ class DashboardController extends Controller {
     return view('dashboard.index', compact('dashboard', 'colors'));
   }
 
-  function edit($id=0) {
-    $config = Dashboard::find($id);
-    if(!$config) {
-      return redirect()->route('dashboard')->with('error','Wrong Configuration!');
-    }
+
+  function edit($id = 0) {
+    $config = $this->checkConfig($id);
     $colors = Dashboard::getAllColors();
     return view('dashboard.edit', compact('config', 'colors'));
   }
 
-  function update(Request $request, $id=0) {
-    $config = Dashboard::find($id);
-    if(!$config) {
-      return redirect()->route('dashboard')->with('error','Wrong Configuration!');
-    }
 
+  function update(Request $request, $id = 0) {
+    $config = $this->checkConfig($id);
     if(!$config->validate($request->post())) {
-      $errors = implode('<br />', $config->errors->all());
-      return back()->with('error', $errors);
-    } else {
-      $config->title = $request->title;
-      $config->link = $request->link ?? '';
-      $config->color = $request->color;
-      if($config->save()){
-        return redirect()->route('dashboard')->with('success', 'Configuration edited successfully!');
-      } else {
-        return back()->with('error', 'Some problem appeared during editing, please try again later!');
-      }
+      return back()->with('error', $config->errorMsg());
     }
+    if($config->patchSave($request)){
+      return redirect()->route('dashboard')->with('success', 'Configuration edited successfully!');
+    }
+    return back()->with('error', 'Some problem appeared during editing, please try again later!');
   }
 
 
-  function delete($id=0){
+  function delete($id = 0) {
+    $config = $this->checkConfig($id);
+    if($config->reset()) {
+      return redirect()->route('dashboard')->with('success', 'Configuration reset successfully!');
+    }
+    return redirect()->route('dashboard')->with('error', 'Some problem appeared during resetting, please try again later!');
+  }
+
+  /**
+   * check if config is correct
+   * @param int $id
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  private function checkConfig($id = 0) {
     $config = Dashboard::find($id);
     if(!$config) {
       return redirect()->route('dashboard')->with('error','Wrong Configuration!');
     }
-    if($config->reset()) {
-      return redirect()->route('dashboard')->with('success', 'Configuration reset successfully!');
-    } else {
-      return redirect()->route('dashboard')->with('error', 'Some problem appeared during resetting, please try again later!');
-    }
-
+    return $config;
   }
 
 }

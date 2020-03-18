@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 
@@ -62,6 +63,24 @@ class Dashboard extends Model {
     $this->link = '';
     $this->color = self::COLOR_NONE;
     return $this->save();
+  }
+
+  /**
+   * @param Request $data
+   * @return bool
+   */
+  public function patchSave(Request $data) :  bool {
+    $this->title = $data->title;
+    $this->link = $data->link ?? '';
+    $this->color = $data->color;
+    return $this->save();
+  }
+
+  /**
+   * @return string
+   */
+  public function errorMsg() : string {
+    return  implode('<br />', $this->errors->all());
   }
 
 }

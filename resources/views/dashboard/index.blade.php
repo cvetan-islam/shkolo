@@ -22,47 +22,13 @@
     <?php }  ?>
   </div>
 
-    <div style="display:none">
+    <div class="hidden">
         <form method="POST"  id="resetForm">
             @csrf
         </form>
 
     </div>
 </div>
-<script>
-$(document).ready(function() {
-
-  $(".cell").click(function() {
-    window.location.href=$(this).data('href');
-  });
-
-    $.contextMenu({
-      selector: '.cell',
-      callback: function(key, options) {
-        var m = "clicked: " + key;
-        switch(key) {
-          case 'edit':
-            window.location.href='dashboard/edit/'+$(this).data('id');
-            break;
-          case 'delete':
-            var $resetForm = $('#resetForm');
-            $resetForm.attr('action', 'dashboard/delete/'+$(this).data('id'));
-            // console.log($resetForm.attr('action'));
-            $resetForm.submit();
-            // window.location.href='dashboard/delete/'+$(this).data('id');
-            break;
-        }
-      },
-      items: {
-        "edit": {name: "Edit"},
-        "delete": {name: "Reset"},
-        "quit": {name: "Quit"}
-      }
-    });
-
-
-
-});
-</script>
+<script src="{{asset('js/dashboard/index.js')}}"></script>
 </body>
 </html>

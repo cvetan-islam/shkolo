@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#colorSelect").on("change",function(o){console.log($("#colorSelect option:selected").css("color"));var c=$("#colorSelect option:selected").text();$("#colorSelect").css("color",c)})});
