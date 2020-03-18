@@ -47,7 +47,7 @@ class DashboardController extends Controller {
   private function checkConfig($id = 0) {
     $config = Dashboard::find($id);
     if(!$config) {
-      return redirect()->route('dashboard')->with('error','Wrong Configuration!');
+      return redirect()->route('dashboard')->with('error', 'Wrong Configuration!');
     }
     return $config;
   }
